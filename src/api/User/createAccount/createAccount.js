@@ -8,6 +8,15 @@ export default {
                 firstName="", lastName="", bio=""
             } = args;
             try {
+                const exists = await prisma.$exists.user({
+                    OR: [
+                        { userName },
+                        { email }
+                    ]
+                });
+                if (exists) {
+                    throw Error("This Username or Email is already taken.");
+                }
                 /*const user = */
                 await prisma.createUser({
                     userName, email, 

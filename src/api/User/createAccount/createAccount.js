@@ -23,8 +23,9 @@ export default {
                     firstName, lastName, bio
                 });
                 return true;
-            } catch {
-                return false;
+            } catch(error) {
+                throw error;
+                //return false;
             }
         }
     }

@@ -13,6 +13,8 @@ type User {
   comments: [Comment!]! @relation(name:"CommentsOfUser" onDelete:CASCADE)
   chatRooms: [ChatRoom!]!
   loginSecret: String
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Post {
@@ -23,12 +25,16 @@ type Post {
   files: [File!]! @relation(name:"FilesOfPost" onDelete:CASCADE)
   likes: [Like!]! @relation(name:"LikeOfPost" onDelete:CASCADE)
   comments: [Comment!]! @relation(name:"CommentsOfPost" onDelete:CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Like {
   id: ID! @id
   user: User @relation(name:"LikeOfUser")
   post: Post @relation(name:"LikeOfPost")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Comment {
@@ -36,6 +42,8 @@ type Comment {
   text: String!
   user: User @relation(name:"CommentsOfUser")
   post: Post @relation(name:"CommentsOfPost")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type File {
@@ -48,6 +56,8 @@ type ChatRoom {
   id: ID! @id
   participants: [User!]!
   messages: [Message!]!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Message {
@@ -56,4 +66,6 @@ type Message {
   from: User! @relation(name:"From")
   to: User! @relation(name:"To")
   chatRoom: ChatRoom!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }

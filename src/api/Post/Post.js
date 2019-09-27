@@ -4,7 +4,7 @@ export default {
     Post: {
         files: async ({ id }) => await prisma.post({ id }).files(),
         comments: async ({ id }) => await prisma.post({ id }).comments(),
-        user: async ({ id }) => await prisma.post({ id }).comments(),
+        user: async ({ id }) => await prisma.post({ id }).user(),
         isLiked: async ({ id }, args, { request }) => {
             const { user } = request;
             return await prisma.$exists.like({

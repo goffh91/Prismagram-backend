@@ -32,6 +32,7 @@ type Post {
   # generate by computed.js
   isLiked: Boolean!
   likeCount: Int!
+  commentCount: Int!
   createdAt: String
   updatedAt: String
 }

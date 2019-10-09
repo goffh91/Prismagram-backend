@@ -4,7 +4,7 @@ type User {
   email: String! @unique
   firstName: String @default(value:"")
   lastName: String
-  avatar: String
+  avatar: String @default(value:"https://instagram.fbkk2-5.fna.fbcdn.net/vp/9a6e1784803f523b93449ac62009c7f8/5E1A41F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fbkk2-5.fna.fbcdn.net")
   bio: String
   following: [User!]! @relation(name:"FollowRelation")
   followers: [User!]! @relation(name:"FollowRelation")

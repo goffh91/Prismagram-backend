@@ -12,11 +12,21 @@ export default {
                     { post: { id } },
                     { user: { id: user.id } }
                 ]
-            })
+            });
         },
-        likeCount: async ({ id }) => 
-            await prisma.likesConnection({
-                where: { post: { id }}
-            }).aggregate().count()
+        likeCount: async ({ id }) => {
+            return await prisma.likesConnection({
+                where: { post: { id } }
+            })
+                .aggregate()
+                .count();
+        },
+        commentCount: async ({ id }) => {
+            return await prisma.commentsConnection({
+                where: { post: { id } }
+            })
+                .aggregate()
+                .count();
+        }
     }
 }
